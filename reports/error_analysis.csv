@@ -1,0 +1,31 @@
+dimension,modalite,n_tirs,buts,xg_modele,xg_statsbomb,ecart_buts_moins_xg
+distance (yards),0-6,235,107,100.87,105.98,6.13
+distance (yards),6-12,1974,358,340.29,317.51,17.71
+distance (yards),12-18,2064,252,238.60,237.16,13.40
+distance (yards),18-24,1998,110,110.11,113.55,-0.11
+distance (yards),24-30,1826,50,54.87,53.50,-4.87
+distance (yards),30+,1077,15,20.25,15.91,-5.25
+partie du corps,Tête,1565,171,175.24,168.80,-4.24
+partie du corps,Pied gauche,2859,283,257.05,258.89,25.95
+partie du corps,Autre,24,9,6.31,6.92,2.69
+partie du corps,Pied droit,4726,429,426.41,409.01,2.59
+type de tir,Coup franc direct,403,20,23.10,15.68,-3.10
+type de tir,Jeu ouvert,8771,872,841.90,827.94,30.10
+phase de jeu,Sur corner,1490,122,128.34,130.35,-6.34
+phase de jeu,Contre-attaque,421,58,65.66,61.05,-7.66
+phase de jeu,Sur coup franc,1888,179,170.69,159.34,8.31
+phase de jeu,Sur dégagement de but,392,35,38.26,36.75,-3.26
+phase de jeu,Relance du gardien,168,24,15.38,16.14,8.62
+phase de jeu,Sur engagement,85,8,6.11,7.16,1.89
+phase de jeu,Sur touche,1678,147,147.67,143.91,-0.67
+phase de jeu,Autre,11,3,2.06,2.71,0.94
+phase de jeu,Jeu placé,3041,316,290.81,286.19,25.19
+competition,1. Bundesliga,116,6,12.06,11.11,-6.06
+competition,African Cup of Nations,119,18,11.75,11.30,6.25
+competition,Copa America,161,20,17.83,16.39,2.17
+competition,FIFA World Cup,462,57,44.23,43.57,12.77
+competition,La Liga,1897,191,187.80,184.11,3.20
+competition,Ligue 1,1630,171,156.83,152.81,14.17
+competition,Premier League,2172,219,210.36,205.03,8.64
+competition,Serie A,1937,159,164.64,157.65,-5.64
+competition,UEFA Euro,680,51,59.50,61.65,-8.50

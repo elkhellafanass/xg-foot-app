@@ -32,7 +32,11 @@ def main() -> int:
 
     for comp_id, season_id in competitions:
         meta = comps[(comps.competition_id == comp_id) & (comps.season_id == season_id)]
-        label = f"{meta.competition_name.iloc[0]} {meta.season_name.iloc[0]}" if len(meta) else f"{comp_id}/{season_id}"
+        label = (
+            f"{meta.competition_name.iloc[0]} {meta.season_name.iloc[0]}"
+            if len(meta)
+            else f"{comp_id}/{season_id}"
+        )
         matches = load_matches(comp_id, season_id)
         bar = tqdm(total=len(matches), desc=label[:32].ljust(32), unit="match", ascii=True)
 

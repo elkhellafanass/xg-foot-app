@@ -1,0 +1,240 @@
+{
+  "models": [
+    {
+      "key": "simple__baseline",
+      "name": "baseline",
+      "feature_set": "simple",
+      "file": "simple__baseline.joblib",
+      "label": "Baseline (fr\u00e9quence moyenne)",
+      "features": [
+        "distance",
+        "angle",
+        "minute",
+        "score_diff_before",
+        "under_pressure",
+        "first_time",
+        "is_volley",
+        "body_part",
+        "shot_type",
+        "technique",
+        "play_pattern"
+      ]
+    },
+    {
+      "key": "simple__logreg",
+      "name": "logreg",
+      "feature_set": "simple",
+      "file": "simple__logreg.joblib",
+      "label": "R\u00e9gression logistique",
+      "features": [
+        "distance",
+        "angle",
+        "minute",
+        "score_diff_before",
+        "under_pressure",
+        "first_time",
+        "is_volley",
+        "body_part",
+        "shot_type",
+        "technique",
+        "play_pattern"
+      ]
+    },
+    {
+      "key": "simple__rf",
+      "name": "rf",
+      "feature_set": "simple",
+      "file": "simple__rf.joblib",
+      "label": "For\u00eat al\u00e9atoire",
+      "features": [
+        "distance",
+        "angle",
+        "minute",
+        "score_diff_before",
+        "under_pressure",
+        "first_time",
+        "is_volley",
+        "body_part",
+        "shot_type",
+        "technique",
+        "play_pattern"
+      ]
+    },
+    {
+      "key": "simple__hgb",
+      "name": "hgb",
+      "feature_set": "simple",
+      "file": "simple__hgb.joblib",
+      "label": "Gradient boosting (HistGB)",
+      "features": [
+        "distance",
+        "angle",
+        "minute",
+        "score_diff_before",
+        "under_pressure",
+        "first_time",
+        "is_volley",
+        "body_part",
+        "shot_type",
+        "technique",
+        "play_pattern"
+      ]
+    },
+    {
+      "key": "simple__xgb",
+      "name": "xgb",
+      "feature_set": "simple",
+      "file": "simple__xgb.joblib",
+      "label": "XGBoost",
+      "features": [
+        "distance",
+        "angle",
+        "minute",
+        "score_diff_before",
+        "under_pressure",
+        "first_time",
+        "is_volley",
+        "body_part",
+        "shot_type",
+        "technique",
+        "play_pattern"
+      ]
+    },
+    {
+      "key": "enrichi__baseline",
+      "name": "baseline",
+      "feature_set": "enrichi",
+      "file": "enrichi__baseline.joblib",
+      "label": "Baseline (fr\u00e9quence moyenne)",
+      "features": [
+        "distance",
+        "angle",
+        "minute",
+        "score_diff_before",
+        "under_pressure",
+        "first_time",
+        "is_volley",
+        "body_part",
+        "shot_type",
+        "technique",
+        "play_pattern",
+        "gk_distance",
+        "gk_to_goal",
+        "gk_in_triangle",
+        "n_defenders_triangle",
+        "nearest_defender_dist"
+      ]
+    },
+    {
+      "key": "enrichi__logreg",
+      "name": "logreg",
+      "feature_set": "enrichi",
+      "file": "enrichi__logreg.joblib",
+      "label": "R\u00e9gression logistique",
+      "features": [
+        "distance",
+        "angle",
+        "minute",
+        "score_diff_before",
+        "under_pressure",
+        "first_time",
+        "is_volley",
+        "body_part",
+        "shot_type",
+        "technique",
+        "play_pattern",
+        "gk_distance",
+        "gk_to_goal",
+        "gk_in_triangle",
+        "n_defenders_triangle",
+        "nearest_defender_dist"
+      ]
+    },
+    {
+      "key": "enrichi__rf",
+      "name": "rf",
+      "feature_set": "enrichi",
+      "file": "enrichi__rf.joblib",
+      "label": "For\u00eat al\u00e9atoire",
+      "features": [
+        "distance",
+        "angle",
+        "minute",
+        "score_diff_before",
+        "under_pressure",
+        "first_time",
+        "is_volley",
+        "body_part",
+        "shot_type",
+        "technique",
+        "play_pattern",
+        "gk_distance",
+        "gk_to_goal",
+        "gk_in_triangle",
+        "n_defenders_triangle",
+        "nearest_defender_dist"
+      ]
+    },
+    {
+      "key": "enrichi__hgb",
+      "name": "hgb",
+      "feature_set": "enrichi",
+      "file": "enrichi__hgb.joblib",
+      "label": "Gradient boosting (HistGB)",
+      "features": [
+        "distance",
+        "angle",
+        "minute",
+        "score_diff_before",
+        "under_pressure",
+        "first_time",
+        "is_volley",
+        "body_part",
+        "shot_type",
+        "technique",
+        "play_pattern",
+        "gk_distance",
+        "gk_to_goal",
+        "gk_in_triangle",
+        "n_defenders_triangle",
+        "nearest_defender_dist"
+      ]
+    },
+    {
+      "key": "enrichi__xgb",
+      "name": "xgb",
+      "feature_set": "enrichi",
+      "file": "enrichi__xgb.joblib",
+      "label": "XGBoost",
+      "features": [
+        "distance",
+        "angle",
+        "minute",
+        "score_diff_before",
+        "under_pressure",
+        "first_time",
+        "is_volley",
+        "body_part",
+        "shot_type",
+        "technique",
+        "play_pattern",
+        "gk_distance",
+        "gk_to_goal",
+        "gk_in_triangle",
+        "n_defenders_triangle",
+        "nearest_defender_dist"
+      ]
+    }
+  ],
+  "freeze_defaults": {
+    "gk_distance": 15.380507143784303,
+    "gk_to_goal": 2.9999999999999973,
+    "gk_in_triangle": 1.0,
+    "n_defenders_triangle": 1.0,
+    "nearest_defender_dist": 2.36008474424119
+  },
+  "main_models": {
+    "simple": "hgb",
+    "enrichi": "hgb"
+  }
+}
