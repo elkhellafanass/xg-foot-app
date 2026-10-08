@@ -1,0 +1,22 @@
+# Environnements
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# Donnees StatsBomb : jamais dans Git (licence : pas de redistribution)
+data/raw/
+data/processed/
+data/app_cache/
+*.parquet
+*.json.gz
+*.csv.gz
+
+# Divers
+*.log
+.DS_Store
+Thumbs.db
+.streamlit/secrets.toml
+.env

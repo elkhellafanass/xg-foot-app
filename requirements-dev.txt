@@ -1,0 +1,6 @@
+# Outils de developpement (non necessaires au deploiement).
+-r requirements.txt
+pytest==8.3.3
+ruff==0.7.4
+playwright==1.48.0
+xgboost==2.1.2
