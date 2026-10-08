@@ -110,8 +110,7 @@ with tab_t:
     with left:
         st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
         st.caption(
-            "Au-dessus de la diagonale (orange) : plus de buts que d'xG. "
-            "xG SB = xG StatsBomb (référence)."
+            "Au-dessus de la diagonale (orange) : plus de buts que d'xG. " "xG SB = xG StatsBomb (référence)."
         )
     with right:
         st.dataframe(

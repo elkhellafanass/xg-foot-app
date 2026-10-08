@@ -57,7 +57,7 @@ if n == 0:
     st.warning("Aucun tir ne correspond aux filtres.")
     st.stop()
 
-fig = half_pitch(height=560)
+fig = half_pitch(height=450)
 xg = df[xg_col] if xg_col else df["statsbomb_xg"]
 custom = np.stack(
     [

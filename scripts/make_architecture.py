@@ -57,21 +57,50 @@ def anchor(key: str, side: str) -> tuple[float, float]:
 def main() -> None:
     fig, ax = plt.subplots(figsize=(13, 6.6))
     for x, y, w, h, title, detail, bg, edge in BOXES.values():
-        ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle="round,pad=0.02,rounding_size=0.12",
-                                    fc=bg, ec=edge, lw=1.4))
-        ax.text(x + w / 2, y + h * 0.63, title, ha="center", va="center", fontsize=11,
-                fontweight="bold", color=TEXT_PRIMARY)
-        ax.text(x + w / 2, y + h * 0.28, detail, ha="center", va="center", fontsize=8.8,
-                color=TEXT_SECONDARY)
+        ax.add_patch(
+            FancyBboxPatch((x, y), w, h, boxstyle="round,pad=0.02,rounding_size=0.12", fc=bg, ec=edge, lw=1.4)
+        )
+        ax.text(
+            x + w / 2,
+            y + h * 0.63,
+            title,
+            ha="center",
+            va="center",
+            fontsize=11,
+            fontweight="bold",
+            color=TEXT_PRIMARY,
+        )
+        ax.text(x + w / 2, y + h * 0.28, detail, ha="center", va="center", fontsize=8.8, color=TEXT_SECONDARY)
     for a, b, sa, sb in ARROWS:
-        ax.add_patch(FancyArrowPatch(anchor(a, sa), anchor(b, sb), arrowstyle="-|>", mutation_scale=14,
-                                     color="#52514e", lw=1.2, connectionstyle="arc3,rad=0.0"))
+        ax.add_patch(
+            FancyArrowPatch(
+                anchor(a, sa),
+                anchor(b, sb),
+                arrowstyle="-|>",
+                mutation_scale=14,
+                color="#52514e",
+                lw=1.2,
+                connectionstyle="arc3,rad=0.0",
+            )
+        )
     ax.text(0.2, 6.25, "Architecture du projet xG", fontsize=14, fontweight="bold", color=TEXT_PRIMARY)
-    ax.text(0.2, 5.95, "Bleu : scripts et modules Python - Vert : artefacts versionnés dans Git - "
-            "Gris : données (non versionnées, licence StatsBomb) - Orange : application",
-            fontsize=9, color=TEXT_SECONDARY)
-    ax.text(0.2, 1.0, "Tests : pytest (variables,\nfuite train/test, modèles)\n+ AppTest par page\n"
-            "+ captures Playwright", fontsize=9, color=TEXT_SECONDARY, va="center")
+    ax.text(
+        0.2,
+        5.95,
+        "Bleu : scripts et modules Python - Vert : artefacts versionnés dans Git - "
+        "Gris : données (non versionnées, licence StatsBomb) - Orange : application",
+        fontsize=9,
+        color=TEXT_SECONDARY,
+    )
+    ax.text(
+        0.2,
+        1.0,
+        "Tests : pytest (variables,\nfuite train/test, modèles)\n+ AppTest par page\n"
+        "+ captures Playwright",
+        fontsize=9,
+        color=TEXT_SECONDARY,
+        va="center",
+    )
     ax.set_xlim(0, 13.2)
     ax.set_ylim(0, 6.5)
     ax.axis("off")

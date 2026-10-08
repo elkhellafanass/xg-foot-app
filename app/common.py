@@ -3,11 +3,8 @@
 from __future__ import annotations
 
 import json
-import os
 import sys
 from pathlib import Path
-
-os.environ.setdefault("LOKY_MAX_CPU_COUNT", str(os.cpu_count() or 1))
 
 import joblib
 import numpy as np
@@ -221,8 +218,15 @@ def half_pitch(height: int = 520) -> go.Figure:
         )
     )
     fig.update_xaxes(range=[-1, 81], visible=False, fixedrange=True, constrain="domain")
+    # Terrain colle en haut (sous la legende) quand la hauteur disponible est plus grande.
     fig.update_yaxes(
-        range=[59, 123], visible=False, scaleanchor="x", scaleratio=1, fixedrange=True, constrain="domain"
+        range=[59, 123],
+        visible=False,
+        scaleanchor="x",
+        scaleratio=1,
+        fixedrange=True,
+        constrain="domain",
+        constraintoward="top",
     )
     fig.update_layout(
         height=height,

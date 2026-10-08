@@ -200,7 +200,7 @@ with result_col:
             title=dict(text=FS_LABELS[fs], font=dict(size=14)),
             height=60 + 42 * len(sub),
             margin=dict(l=10, r=50, t=40, b=10),
-            xaxis=dict(range=[0, x_max], tickformat=".0%", gridcolor="#e4e3df"),
+            xaxis=dict(range=[0, x_max], showticklabels=False, showgrid=False),
             yaxis=dict(autorange="reversed"),
             plot_bgcolor="rgba(0,0,0,0)",
             font=dict(color=TEXT_SECONDARY),
