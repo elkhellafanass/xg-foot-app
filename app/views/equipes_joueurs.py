@@ -15,8 +15,8 @@ source_note(source)
 st.warning(
     "**Prudence avec les petits échantillons.** Un écart entre buts et xG sur quelques dizaines "
     "de tirs relève souvent du hasard, pas du talent. Sous l'hypothèse que les xG sont exacts, "
-    "le nombre de buts a une variance égale à la somme des p(1 - p) : la colonne « Écart "
-    "significatif » indique si l'écart dépasse 1,96 écart-type (seuil de 95 %). Avec de "
+    "le nombre de buts a une variance égale à la somme des p(1 - p) : la colonne « Écart signif. »"
+    " indique si l'écart dépasse 1,96 écart-type (seuil de 95 %). Avec de "
     "nombreuses lignes comparées, quelques écarts « significatifs » sont attendus par hasard.",
     icon=":material/warning:",
 )
@@ -55,17 +55,17 @@ def aggregate(frame: pd.DataFrame, key: str) -> pd.DataFrame:
             Tirs=("is_goal", "size"),
             Buts=("is_goal", "sum"),
             xG=(xg_col, "sum"),
-            xG_StatsBomb=("statsbomb_xg", "sum"),
+            **{"xG SB": ("statsbomb_xg", "sum")},
             var=("var", "sum"),
         )
     )
     g["Buts - xG"] = g["Buts"] - g["xG"]
     z = g["Buts - xG"] / np.sqrt(g["var"].clip(lower=1e-9))
-    g["Écart significatif"] = np.where(z.abs() > 1.96, np.where(z > 0, "oui (+)", "oui (-)"), "non")
+    g["Écart signif."] = np.where(z.abs() > 1.96, np.where(z > 0, "oui (+)", "oui (-)"), "non")
     return g.drop(columns="var").reset_index()
 
 
-num_cfg = {c: st.column_config.NumberColumn(format="%.1f") for c in ["xG", "xG_StatsBomb", "Buts - xG"]}
+num_cfg = {c: st.column_config.NumberColumn(format="%.1f") for c in ["xG", "xG SB", "Buts - xG"]}
 tab_t, tab_p = st.tabs(["Équipes", "Joueurs"])
 
 with tab_t:
@@ -109,7 +109,10 @@ with tab_t:
     left, right = st.columns([2, 3], gap="large")
     with left:
         st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
-        st.caption("Au-dessus de la diagonale (orange) : plus de buts que d'xG.")
+        st.caption(
+            "Au-dessus de la diagonale (orange) : plus de buts que d'xG. "
+            "xG SB = xG StatsBomb (référence)."
+        )
     with right:
         st.dataframe(
             teams.rename(columns={"team": "Équipe"}),

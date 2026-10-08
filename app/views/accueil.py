@@ -24,6 +24,10 @@ def fmt_int(v) -> str:
     return f"{int(v):,}".replace(",", " ")
 
 
+def dec(v: float, d: int) -> str:
+    return f"{v:.{d}f}".replace(".", ",")
+
+
 c1, c2, c3, c4 = st.columns(4)
 c1.metric("Matchs", fmt_int(total["n_matchs"]))
 c2.metric("Tirs (hors penalties)", fmt_int(total["n_tirs"]))
@@ -34,10 +38,10 @@ main = mjson["modele_principal"]["enrichi"]
 row = metrics[(metrics["jeu"] == "enrichi") & (metrics["modele"] == main)].iloc[0]
 ref = metrics[metrics["modele"] == "statsbomb"].iloc[0]
 c1, c2, c3, c4 = st.columns(4)
-c1.metric(f"ROC-AUC - {row['libelle']} (enrichi)", f"{row['roc_auc']:.3f}")
-c2.metric("ROC-AUC - xG StatsBomb", f"{ref['roc_auc']:.3f}")
-c3.metric("Score de Brier - modèle", f"{row['brier']:.4f}")
-c4.metric("Score de Brier - StatsBomb", f"{ref['brier']:.4f}")
+c1.metric("ROC-AUC - modèle principal", dec(row["roc_auc"], 3), help=f"{row['libelle']}, jeu enrichi")
+c2.metric("ROC-AUC - xG StatsBomb", dec(ref["roc_auc"], 3))
+c3.metric("Score de Brier - modèle principal", dec(row["brier"], 4))
+c4.metric("Score de Brier - xG StatsBomb", dec(ref["brier"], 4))
 st.caption(
     f"Évaluation sur {fmt_int(mjson['split']['test']['n_tirs'])} tirs de "
     f"{mjson['split']['test']['n_matchs']} matchs jamais vus à l'entraînement."
@@ -79,5 +83,10 @@ with right:
             "n_buts": "Buts",
         }
     )
-    st.dataframe(table, hide_index=True, use_container_width=True)
+    st.dataframe(
+        table,
+        hide_index=True,
+        use_container_width=True,
+        column_config={c: st.column_config.NumberColumn(format="%d") for c in ["Matchs", "Tirs", "Buts"]},
+    )
     st.caption("Penalties et tirs au but exclus. Bundesliga 2015/2016 : seuls 34 matchs sont publiés.")

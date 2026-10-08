@@ -64,14 +64,14 @@ with tab_table:
     t["Jeu"] = t["jeu"].map({"simple": "Simple", "enrichi": "Enrichi", "reference": "Référence"})
 
     def ci(v, lo, hi, d):
-        return f"{v:.{d}f} [{lo:.{d}f} ; {hi:.{d}f}]"
+        return f"{v:.{d}f} [{lo:.{d}f} ; {hi:.{d}f}]".replace(".", ",")
 
     t["ROC-AUC [IC 95 %]"] = [ci(r.roc_auc, r.roc_auc_ic_bas, r.roc_auc_ic_haut, 3) for r in t.itertuples()]
     t["Brier [IC 95 %]"] = [ci(r.brier, r.brier_ic_bas, r.brier_ic_haut, 4) for r in t.itertuples()]
     t["Log-loss [IC 95 %]"] = [
         ci(r.log_loss, r.log_loss_ic_bas, r.log_loss_ic_haut, 4) for r in t.itertuples()
     ]
-    t["Gain Brier vs baseline"] = t["brier_skill_vs_baseline"].map(lambda v: f"{v:.1%}")
+    t["Gain Brier vs baseline"] = t["brier_skill_vs_baseline"].map(lambda v: f"{v:.1%}".replace(".", ","))
     t = t.drop_duplicates(subset=["modele", "Jeu"])
     t = t[~((t["modele"] == "baseline") & (t["jeu"] == "enrichi"))]
     st.dataframe(

@@ -78,6 +78,14 @@ VALUE_LABELS = {
     "From Goal Kick": "Sur dégagement de but",
     "From Keeper": "Relance du gardien",
     "From Kick Off": "Sur engagement",
+    "Goal": "But",
+    "Saved": "Arrêté",
+    "Saved Off Target": "Arrêté (non cadré)",
+    "Saved to Post": "Arrêté sur le poteau",
+    "Off T": "Non cadré",
+    "Blocked": "Contré",
+    "Post": "Poteau",
+    "Wayward": "Raté",
 }
 
 

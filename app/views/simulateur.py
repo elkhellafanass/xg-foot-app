@@ -35,7 +35,7 @@ if event and event.get("selection", {}).get("points"):
         ss.sim_last_click = click
         ss.sim_x, ss.sim_y = click
 
-controls, pitch_col, result_col = st.columns([1.1, 1.4, 1.5], gap="medium")
+controls, pitch_col, result_col = st.columns([1.0, 1.7, 1.3], gap="medium")
 
 with controls:
     st.subheader("Tir")
@@ -108,14 +108,14 @@ freeze = {
 shot = make_shot(x, y, body, shot_type, technique, pattern, pressure, first_time, minute, score, freeze)
 
 with pitch_col:
-    fig = half_pitch(height=560)
+    fig = half_pitch(height=420)
     gx, gy = np.meshgrid(np.arange(0, 80.5, 1.0), np.arange(60, 120.5, 1.0))
     fig.add_trace(
         go.Scatter(
             x=gx.ravel(),
             y=gy.ravel(),
             mode="markers",
-            marker=dict(size=9, color="rgba(0,0,0,0)"),
+            marker=dict(size=9, color="rgba(255,255,255,0.02)"),
             hovertemplate="x = %{y}, y = %{x}<extra>Cliquer pour tirer d'ici</extra>",
             showlegend=False,
         )
@@ -162,7 +162,7 @@ with pitch_col:
         config={"displayModeBar": False},
     )
     m1, m2 = st.columns(2)
-    m1.metric("Distance au centre du but", f"{dist:.1f} yd".replace(".", ","))
+    m1.metric("Distance au but", f"{dist:.1f} yd".replace(".", ","))
     m2.metric("Angle d'ouverture", f"{math.degrees(angle):.1f}°".replace(".", ","))
 
 with result_col:
@@ -177,7 +177,9 @@ with result_col:
     main_key = f"enrichi__{main.get('enrichi', 'hgb')}"
     main_p = next((p for info, p in rows if info["key"] == main_key), None)
     if main_p is not None:
-        st.metric("Modèle principal (gradient boosting, jeu enrichi)", f"{main_p:.1%}".replace(".", ","))
+        st.metric("Modèle principal (HistGB, jeu enrichi)", f"{main_p:.1%}".replace(".", ","))
+    # Echelle commune aux deux graphiques, adaptee aux probabilites affichees.
+    x_max = min(1.0, max(0.3, 1.3 * max((p for _, p in rows), default=0.3)))
     for fs in ("simple", "enrichi"):
         sub = [(i, p) for i, p in rows if i["feature_set"] == fs]
         if not sub:
@@ -198,7 +200,7 @@ with result_col:
             title=dict(text=FS_LABELS[fs], font=dict(size=14)),
             height=60 + 42 * len(sub),
             margin=dict(l=10, r=50, t=40, b=10),
-            xaxis=dict(range=[0, 1], tickformat=".0%", gridcolor="#e4e3df"),
+            xaxis=dict(range=[0, x_max], tickformat=".0%", gridcolor="#e4e3df"),
             yaxis=dict(autorange="reversed"),
             plot_bgcolor="rgba(0,0,0,0)",
             font=dict(color=TEXT_SECONDARY),

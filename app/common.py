@@ -220,15 +220,17 @@ def half_pitch(height: int = 520) -> go.Figure:
             showlegend=False,
         )
     )
-    fig.update_xaxes(range=[-1, 81], visible=False, fixedrange=True)
-    fig.update_yaxes(range=[59, 123], visible=False, scaleanchor="x", scaleratio=1, fixedrange=True)
+    fig.update_xaxes(range=[-1, 81], visible=False, fixedrange=True, constrain="domain")
+    fig.update_yaxes(
+        range=[59, 123], visible=False, scaleanchor="x", scaleratio=1, fixedrange=True, constrain="domain"
+    )
     fig.update_layout(
         height=height,
-        margin=dict(l=10, r=10, t=10, b=10),
+        margin=dict(l=10, r=10, t=30, b=10),
         plot_bgcolor=PITCH_BG,
         paper_bgcolor="rgba(0,0,0,0)",
         legend=dict(
-            orientation="h", yanchor="bottom", y=0.0, xanchor="center", x=0.5, bgcolor="rgba(255,255,255,0.8)"
+            orientation="h", yanchor="bottom", y=1.0, xanchor="center", x=0.5, bgcolor="rgba(0,0,0,0)"
         ),
     )
     return fig

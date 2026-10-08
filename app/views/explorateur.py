@@ -57,7 +57,7 @@ if n == 0:
     st.warning("Aucun tir ne correspond aux filtres.")
     st.stop()
 
-fig = half_pitch(height=600)
+fig = half_pitch(height=560)
 xg = df[xg_col] if xg_col else df["statsbomb_xg"]
 custom = np.stack(
     [
@@ -108,15 +108,12 @@ with right:
     cols = [
         "player",
         "team",
-        "opponent",
-        "minute",
-        "body_part",
         "outcome",
         xg_col or "statsbomb_xg",
         "statsbomb_xg",
     ]
     top = df.nlargest(15, xg_col or "statsbomb_xg")[cols].copy()
-    top["body_part"] = top["body_part"].map(fr)
+    top["outcome"] = top["outcome"].map(fr)
     st.dataframe(
         top.rename(
             columns={
